@@ -1,0 +1,15 @@
+#!/bin/sh
+
+. $(dirname $(readlink -f $0))/vpn-functions.sh
+
+case "$1" in
+    connect)
+        read -p "Token: " token
+        vpn_connect ${token}
+        ;;
+    disconnect)
+        vpn_disconnect
+        ;;
+    *)
+        echo "Usage $(basename $0) { connect | disconnect }"
+esac
